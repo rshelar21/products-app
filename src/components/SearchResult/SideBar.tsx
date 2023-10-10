@@ -2,31 +2,53 @@ import React from "react";
 import "../../Styles/Sidebar.css";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import { StarIcon } from "@heroicons/react/24/solid";
-import { StarIcon as StarOutlined} from "@heroicons/react/24/outline";
+import { StarIcon as StarOutlined } from "@heroicons/react/24/outline";
 
+interface IProps {
+  checkBoxPrice: any | string;
+  handleSelectPrice: (e: React.ChangeEvent<HTMLInputElement>, type : string) => void;
+  checkBoxCategory : any | string;
+  checkBoxRating : any | string;
+  handleClearFilter : () => void;
+}
 
-
-
-const SideBar = () => {
+const SideBar = ({ handleSelectPrice, checkBoxPrice, checkBoxCategory, checkBoxRating , handleClearFilter}: IProps) => {
   return (
     <>
       <div className="sidear__body">
         <div className="filter_body">
           <div className="filter_header">
-            <h5 className="filter_title">Brand</h5>
+            <h5 className="filter_title">Category</h5>
             <ChevronDownIcon className="down_arrow" />
           </div>
 
           <div className="filter_option">
-            <input type="checkbox" className="label" />
-            <label htmlFor="" className="label">
-              Mango
+            <input
+              type="radio"
+              className="label"
+              id="mens"
+              name="category"
+              value="men's clothing"
+              onChange={(e) => handleSelectPrice(e, "category")}
+              checked={checkBoxCategory === "men's clothing"}
+            />
+            <label htmlFor="mens" className="label">
+              men's clothing
             </label>
           </div>
+
           <div className="filter_option">
-            <input type="checkbox" className="" />
-            <label htmlFor="" className="label">
-              H&M
+            <input
+              type="radio"
+              className="label"
+              id="women"
+              name="category"
+              value="women's clothing"
+              onChange={(e) => handleSelectPrice(e, "category")}
+              checked={checkBoxCategory === "women's clothing"}
+            />
+            <label htmlFor="women" className="label">
+              women's clothing
             </label>
           </div>
         </div>
@@ -38,14 +60,30 @@ const SideBar = () => {
           </div>
 
           <div className="filter_option">
-            <input type="checkbox" className="" />
-            <label htmlFor="" className="label">
+            <input
+              type="radio"
+              className=""
+              name="price"
+              id="100"
+              checked={checkBoxPrice === "100"}
+              onChange={(e) => handleSelectPrice(e, "price")}
+              value={"100"}
+            />
+            <label htmlFor="100" className="label">
               Under $100
             </label>
           </div>
           <div className="filter_option">
-            <input type="checkbox" className="" />
-            <label htmlFor="" className="label">
+            <input
+              type="radio"
+              className=""
+              name="price"
+              id="200"
+              checked={checkBoxPrice === "200"}
+              onChange={(e) => handleSelectPrice(e, "price")}
+              value={"200"}
+            />
+            <label htmlFor="200" className="label">
               $100 - $200
             </label>
           </div>
@@ -58,8 +96,16 @@ const SideBar = () => {
           </div>
 
           <div className="filter_option">
-            <input type="checkbox" className="" />
-            <label htmlFor="" className="">
+            <input
+              type="radio"
+              className=""
+              name="rating"
+              id="5"
+              checked={checkBoxRating === '5'}
+              onChange={(e) => handleSelectPrice(e, "rate")}
+              value={'5'}
+            />
+            <label htmlFor="5" className="">
               <StarIcon className="star_icon" />
               <StarIcon className="star_icon" />
               <StarIcon className="star_icon" />
@@ -68,10 +114,17 @@ const SideBar = () => {
             </label>
           </div>
 
-          
           <div className="filter_option">
-            <input type="checkbox" className="" />
-            <label htmlFor="" className="">
+            <input
+              type="radio"
+              className=""
+              name="rating"
+              id="4"
+              checked={checkBoxRating === '4'}
+              onChange={(e) => handleSelectPrice(e, "rate")}
+              value={'4'}
+            />
+            <label htmlFor="4" className="">
               <StarIcon className="star_icon" />
               <StarIcon className="star_icon" />
               <StarIcon className="star_icon" />
@@ -80,10 +133,17 @@ const SideBar = () => {
             </label>
           </div>
 
-          
           <div className="filter_option">
-            <input type="checkbox" className="" />
-            <label htmlFor="" className="">
+            <input
+              type="radio"
+              className=""
+              name="rating"
+              id="3"
+              checked={checkBoxRating === '3'}
+              onChange={(e) => handleSelectPrice(e, "rate")}
+              value={'3'}
+            />
+            <label htmlFor="3" className="">
               <StarIcon className="star_icon" />
               <StarIcon className="star_icon" />
               <StarIcon className="star_icon" />
@@ -93,8 +153,16 @@ const SideBar = () => {
           </div>
 
           <div className="filter_option">
-            <input type="checkbox" className="" />
-            <label htmlFor="" className="">
+            <input
+              type="radio"
+              className=""
+              name="rating"
+              id="2"
+              checked={checkBoxRating === '2'}
+              onChange={(e) => handleSelectPrice(e, "rate")}
+              value={'2'}
+            />
+            <label htmlFor="2" className="">
               <StarIcon className="star_icon" />
               <StarIcon className="star_icon" />
               <StarOutlined className="star-outline" />
@@ -104,8 +172,16 @@ const SideBar = () => {
           </div>
 
           <div className="filter_option">
-            <input type="checkbox" className="" />
-            <label htmlFor="" className="">
+            <input
+              type="radio"
+              className=""
+              name="rating"
+              id="1"
+              checked={checkBoxRating === '1'}
+              onChange={(e) => handleSelectPrice(e, "rate")}
+              value={'1'}
+            />
+            <label htmlFor="1" className="">
               <StarIcon className="star_icon" />
               <StarOutlined className="star-outline" />
               <StarOutlined className="star-outline" />
@@ -114,6 +190,8 @@ const SideBar = () => {
             </label>
           </div>
         </div>
+
+        <button className="btn" onClick={handleClearFilter}>Clear Filter</button>
       </div>
     </>
   );

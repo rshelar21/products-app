@@ -4,6 +4,7 @@
   max-height: 100vh;
   font-family: "Poppins", sans-serif;
   position: relative;
+  overflow: hidden;
 }
 
 .search__container {
@@ -34,4 +35,5 @@
   display: grid;
   grid-template-columns: minmax(0, 300px) minmax(0, 3fr);
   grid-gap: 70px;
+  position: relative;
 }/*# sourceMappingURL=SearchResult.css.map */

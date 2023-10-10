@@ -13,3 +13,9 @@ interface IProducts {
     title : string,
     rating : IRate
 }
+
+interface IFilters {
+    category : string,
+    price : string,
+    rating : string
+}

@@ -4,4 +4,10 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 40px;
   padding-bottom: 20px;
+  overflow-y: scroll;
+  max-height: 100vh;
+  padding-bottom: 25vh;
+}
+.board__body::-webkit-scrollbar {
+  display: none;
 }/*# sourceMappingURL=ProductsBoard.css.map */

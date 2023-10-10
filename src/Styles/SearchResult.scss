@@ -6,6 +6,7 @@
     max-height: 100vh;
     font-family: $font;
     position: relative;
+    overflow: hidden;
 }
 .search__container{
     width: 100%;
@@ -32,4 +33,5 @@
     display: grid;
     grid-template-columns: minmax(0, 300px) minmax(0, 3fr);
     grid-gap: 70px;
+    position: relative;
 }

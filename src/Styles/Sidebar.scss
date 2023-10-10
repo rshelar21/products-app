@@ -3,6 +3,8 @@
 
 .sidear__body{
     background-color: $white;
+    position: sticky;
+    top: 200px;
 }
 .down_arrow{
     color : gray;
@@ -44,4 +46,12 @@
     color : gray;
     width: 15px;
     height: 15px;
+}
+.btn {
+    background-color: $white;
+    padding: 5px 10px;
+    border : 1px solid gray;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
 }
