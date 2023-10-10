@@ -1,0 +1,7 @@
+.board__body {
+  background-color: #fff;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  padding-bottom: 20px;
+}/*# sourceMappingURL=ProductsBoard.css.map */

@@ -1,0 +1,47 @@
+@import "./variables/variable.scss";
+
+
+.sidear__body{
+    background-color: $white;
+}
+.down_arrow{
+    color : gray;
+    width: 20px;
+    height: 20px;
+}
+
+.filter_body{
+    border-bottom: 1px solid rgb(243, 243, 243);
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.filter_header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.filter_title{
+    color : $black;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 400;
+}
+.filter_option{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 5px;
+}
+.label{
+    color : gray;
+    font-size: 14px;
+}
+
+.star_icon{
+    @include star_icon;
+}
+.star-outline{
+    color : gray;
+    width: 15px;
+    height: 15px;
+}
