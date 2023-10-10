@@ -1,6 +1,5 @@
 .product_card {
   width: 200px;
-  height: 250px;
   background-color: #fff;
   position: relative;
 }
@@ -17,4 +16,14 @@
   color: gray;
   font-family: "Poppins", sans-serif;
   letter-spacing: 1px;
+}
+
+.product_link {
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .product_card {
+    width: 160px;
+  }
 }/*# sourceMappingURL=ProductCard.css.map */

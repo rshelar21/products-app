@@ -1,7 +1,7 @@
 @import "./variables/variable.scss";
 .product_card{
     width: 200px;
-    height: 250px;
+    // height: 250px;
     background-color: $white;
     position: relative;
     img {
@@ -17,4 +17,13 @@
     color: gray;
     font-family: $font;
     letter-spacing: 1px;
+}
+.product_link {
+    text-decoration: none;
+}
+
+@media (max-width: $breakpoint-tablet) {
+    .product_card{
+        width: 160px;
+    }
 }

@@ -8,14 +8,16 @@ const Home = () => {
   const [showSearchBox, setShowSearchBox] = useState<boolean>(false);
   const [productsData, setProductsData] = useState<IProducts[]>([]);
 
-  // useEffect(() => {
-  //   handleGetProducts();
-  // }, []);
+  useEffect(() => {
+    handleGetProducts();
+  }, []);
 
   const handleGetProducts = async () => {
     const res = await axios.get("https://fakestoreapi.com/products");
-    setProductsData(res?.data?.data);
+    setProductsData(res?.data);
   };
+
+  // console.log("productsData", productsData);
 
   return (
     <>
@@ -27,7 +29,11 @@ const Home = () => {
           <SearchField />
         </div>
 
-        <div>{showSearchBox && <SearchBox />}</div>
+        <div>
+          {showSearchBox && productsData && (
+            <SearchBox productsData={productsData} />
+          )}
+        </div>
       </div>
     </>
   );

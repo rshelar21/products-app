@@ -16,3 +16,14 @@
     }
 }
 
+@media (max-width: $breakpoint-laptop-L) {
+    .board__body{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: $breakpoint-laptop) {
+    .board__body{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

@@ -31,7 +31,18 @@
 }
 .show_result {
     display: grid;
-    grid-template-columns: minmax(0, 300px) minmax(0, 3fr);
+    grid-template-columns: minmax(0, 260px) minmax(0, 3fr);
     grid-gap: 70px;
     position: relative;
+}
+@media (max-width: $breakpoint-tablet) {
+    .show_result {
+        display: flex;
+        flex-direction: column;
+    }
+    .result__body {
+        min-height: 100vh;
+        overflow: unset;
+        padding: 10px;
+    }
 }

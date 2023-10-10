@@ -10,4 +10,15 @@
 }
 .board__body::-webkit-scrollbar {
   display: none;
+}
+
+@media (max-width: 1440px) {
+  .board__body {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 1024px) {
+  .board__body {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }/*# sourceMappingURL=ProductsBoard.css.map */

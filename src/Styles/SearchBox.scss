@@ -5,8 +5,8 @@
     background-color: $white;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
     padding: 30px;
-    // max-width: 600px;
-    // width: 850px;
+    width: 100%;
+    max-width: 935px;
     position: relative;
     margin-top: 20px;
     border-radius: 5px;
@@ -43,5 +43,33 @@
     }
 }
 .pop_container{
-    padding-top: 30px;
+    padding-top: 10px;
+}
+.searchLinks {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgb(33, 33, 33);
+    letter-spacing: 1px;
+    cursor: pointer;
+    padding: 2px 0;
+}
+
+
+
+@media (max-width: $breakpoint-laptop) {
+    .box__container{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (max-width: $breakpoint-tablet) {
+    .box__container{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: $breakpoint-mobile-L) {
+    .box__container{
+        grid-template-columns: 1fr;
+    }
 }

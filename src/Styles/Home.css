@@ -1,6 +1,6 @@
 .home_body {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/public/assets/bg-cover.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -22,4 +22,10 @@
   height: fit-content;
   margin-top: 80px;
   position: relative;
+}
+
+@media (max-width: 1024px) {
+  .home_body {
+    padding: 0 10px;
+  }
 }/*# sourceMappingURL=Home.css.map */

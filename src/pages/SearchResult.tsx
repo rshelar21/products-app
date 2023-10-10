@@ -4,6 +4,7 @@ import SearchField from "../components/global/SearchField";
 import SideBar from "../components/SearchResult/SideBar";
 import ProductsBoard from "../components/SearchResult/ProductsBoard";
 import axios from "axios";
+import { useSearchParams } from "react-router-dom";
 
 const SearchResult = () => {
   const [products, setProducts] = useState<IProducts[]>([]);
@@ -12,16 +13,29 @@ const SearchResult = () => {
   const [checkBoxCategory, setCheckBoxCategory] = useState<string>("");
   const [checkBoxRating, setCheckBoxRating] = useState<string>("");
   const [filterdList, setFilterdList] = useState<IProducts[]>([]);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     handleGetProducts();
   }, []);
 
+  useEffect(() => {
+    if (searchParams.get("q")) {
+      setCheckBoxCategory(searchParams.get("q") as string);
+    }
+  }, [searchParams]);
+
   const handleGetProducts = async () => {
     const res = await axios.get("https://fakestoreapi.com/products");
     setProducts(res?.data);
-    setFilterdList(res?.data);
-    // console.log(res?.data);
+    if (searchParams.get("q")) {
+      const data = res?.data.filter(
+        (product: IProducts) => product.category === searchParams.get("q")
+      );
+      setFilterdList(data);
+    }else{
+      setFilterdList(res?.data);
+    }
   };
 
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,46 +59,19 @@ const SearchResult = () => {
     }
   };
 
-  // using useMemo to filter products
-
-  // const filteredProducts = useMemo(() => {
-  //   const productsArr = [...products];
-  //   // console.log(productsArr);
-  //   if (searchQuery) {
-  //     console.log('search');
-  //     return productsArr.filter((product) =>
-  //     searchQuery === "" || null ? product : product.title.toLowerCase().includes(searchQuery.toLowerCase())
-  //     );
-  //   }
-  //   if(checkBoxPrice){
-  //     console.log('pri');
-  //     return productsArr.filter((product) => product.price < Number(checkBoxPrice));
-  //   }
-  //   if(checkBoxCategory){
-  //     console.log('cat');
-  //     return productsArr.filter((product) => product.category === checkBoxCategory);
-  //   }
-  //   if(checkBoxRating){
-  //     console.log('rate');
-  //     return productsArr.filter((product) => product.rating.rate === Math.floor(Number(checkBoxRating)) + 1);
-  //   }
-  //   console.log('sdd');
-  //   return productsArr;
-  // }, [searchQuery, checkBoxPrice, checkBoxCategory, checkBoxRating, products]);
-
-  // console.log(checkBoxPrice, checkBoxCategory, checkBoxRating);
-  // console.log(filteredProducts);
-
-  // using useEffect to filter products
-
   useEffect(() => {
     handleFilterProducts();
-  }, [searchQuery, checkBoxPrice, checkBoxCategory, checkBoxRating]);
+  }, [
+    searchQuery,
+    checkBoxPrice,
+    checkBoxCategory,
+    checkBoxRating,
+    searchParams,
+  ]);
 
   const handleFilterProducts = () => {
     let productsArr = [...products];
     if (searchQuery != "") {
-      console.log("search");
       productsArr = productsArr.filter((product) =>
         searchQuery === "" || null
           ? product
@@ -92,19 +79,16 @@ const SearchResult = () => {
       );
     }
     if (checkBoxPrice != "") {
-      console.log("pri");
       productsArr = productsArr.filter(
         (product) => product.price < Number(checkBoxPrice)
       );
     }
     if (checkBoxCategory != "") {
-      console.log("cat");
       productsArr = productsArr.filter(
         (product) => product.category === checkBoxCategory
       );
     }
     if (checkBoxRating != "") {
-      console.log("rate", typeof checkBoxRating);
       productsArr = productsArr.filter(
         (product) =>
           Math.floor(Number(product.rating.rate)) + 1 ===
@@ -122,8 +106,6 @@ const SearchResult = () => {
     setCheckBoxCategory("");
     setCheckBoxRating("");
   };
-
-  console.log(filterdList, "f");
 
   return (
     <>
