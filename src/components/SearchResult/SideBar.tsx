@@ -7,7 +7,6 @@ import { Bars3CenterLeftIcon } from "@heroicons/react/24/solid";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import ChechBox from "./ChechBox";
 
-<XMarkIcon className="" />;
 
 interface IProps {
   checkBoxPrice: any | string;
